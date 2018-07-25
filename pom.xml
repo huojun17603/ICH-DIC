@@ -6,13 +6,13 @@
 
     <groupId>com.ich.dic</groupId>
     <artifactId>ich.dic</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>com.ich.core</groupId>
             <artifactId>ich.core</artifactId>
-            <version>1.0.6</version>
+            <version>1.2.3</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

@@ -1,15 +1,17 @@
 package com.ich.dictionary.pojo;
 
-public class National {
+public class IBank {
 
     /**`id` bigint(20) NOT NULL AUTO_INCREMENT,*/
     private Long id;
-    /** `code` varchar(16) DEFAULT NULL COMMENT '国家编码',*/
+    /** `code` varchar(16) DEFAULT NULL COMMENT '银行编码',*/
     private String code;
-    /**`name` varchar(64) DEFAULT NULL COMMENT '国家名称',*/
+    /**`name` varchar(64) DEFAULT NULL COMMENT '银行名称：农业银行',*/
     private String name;
     /**`status` int(11) DEFAULT '1' COMMENT '状态：1-可用，0-禁用',*/
     private Integer status;
+    /**`themecode` varchar(32) DEFAULT NULL COMMENT '颜色编码：（#00ccFF）#+颜色代码',*/
+    private String themecode;
     /**`onum` int(5) DEFAULT NULL COMMENT '自定义排序，数字大的排前面',*/
     private Integer onum;
 
@@ -43,6 +45,14 @@ public class National {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getThemecode() {
+        return themecode;
+    }
+
+    public void setThemecode(String themecode) {
+        this.themecode = themecode;
     }
 
     public Integer getOnum() {

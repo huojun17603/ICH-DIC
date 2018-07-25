@@ -1,6 +1,6 @@
 package com.ich.dictionary.pojo;
 
-public class AddressCN {
+public class IAddresscn {
 
     /** ID */
     private Long id;

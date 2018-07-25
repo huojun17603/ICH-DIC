@@ -1,25 +1,29 @@
 package com.ich.dictionary.service;
 
 import com.ich.core.http.entity.HttpResponse;
-import com.ich.dictionary.pojo.AddressCN;
-import com.ich.dictionary.pojo.Bank;
+import com.ich.core.http.entity.PageView;
+import com.ich.core.http.entity.SortView;
+import com.ich.dictionary.pojo.IAddresscn;
+import com.ich.dictionary.pojo.IBank;
+import com.ich.dictionary.pojo.IBankExample;
 
 import java.util.List;
 
-public interface BankService {
+public interface IBankService {
 
     /**
      *  请求所有列表
      */
-    public List<Bank> findAllList();
+    public List<IBank> findAllList();
 
     /**
      * 新增或修改银行信息，所有的操作对状态无效，新增的默认状态为不可用
      * @param bank 需要保存或修改的数据
      * @return 是否完成
      */
-    public HttpResponse addOrEdit(Bank bank);
+    public HttpResponse add(IBank bank);
 
+    public HttpResponse edit(IBank bank);
     /**
      * 修改状态
      * @param id ID
@@ -27,9 +31,12 @@ public interface BankService {
      * @return 是否完成
      */
     public HttpResponse editStatus(Long id,Integer status);
+
+    List<IBank> findList(PageView page, SortView sort, IBankExample example);
+
     /**
      * 查询所有的有效银行列表
      * @return 列表
      */
-    public List<Bank> findBanks();
+    public List<IBank> findBanks();
 }
