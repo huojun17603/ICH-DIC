@@ -41,6 +41,8 @@ public class IAddresscnServiceImpl implements IAddresscnService {
         }
         IAddresscn addr = this.addressCNMapper.selectByPrimaryKey(address.getId());
         if(ObjectHelper.isNotEmpty(addr)) return new HttpResponse(HttpResponse.HTTP_ERROR,"重复的区域编码！");
+        if(ObjectHelper.isEmpty(address.getOnum())) address.setOnum(0);
+        address.setStatus(0);
         this.addressCNMapper.insert(address);
         return new HttpResponse(HttpResponse.HTTP_OK,"OK");
     }
@@ -64,6 +66,7 @@ public class IAddresscnServiceImpl implements IAddresscnService {
             if(ObjectHelper.isEmpty(addrx))
                 return new HttpResponse(HttpResponse.HTTP_ERROR,"无效的区域父级！");
         }
+        if(ObjectHelper.isEmpty(address.getOnum())) address.setOnum(0);
         this.addressCNMapper.updateByPrimaryKeySelective(address);
         return new HttpResponse(HttpResponse.HTTP_OK,"OK");
     }

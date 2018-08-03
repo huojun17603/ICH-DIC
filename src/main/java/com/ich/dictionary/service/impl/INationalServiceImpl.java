@@ -27,6 +27,8 @@ public class INationalServiceImpl implements INationalService {
     public HttpResponse add(INational national) {
         if(ObjectHelper.isEmpty(national.getCode())) return new HttpResponse(HttpResponse.HTTP_ERROR,"国家编码不可为空！");
         if(ObjectHelper.isEmpty(national.getName())) return new HttpResponse(HttpResponse.HTTP_ERROR,"国家名称不可为空！");
+        if(ObjectHelper.isEmpty(national.getOnum())) national.setOnum(0);
+        national.setStatus(0);
         INationalExample example = new INationalExample();
         example.createCriteria().andCodeEqualTo(national.getCode());
         List<INational> list =nationalMapper.selectByExample(example);
@@ -42,6 +44,7 @@ public class INationalServiceImpl implements INationalService {
         if(ObjectHelper.isEmpty(entity)) return new HttpResponse(HttpResponse.HTTP_ERROR,"无效的数据记录！");
         if(ObjectHelper.isEmpty(national.getCode())) return new HttpResponse(HttpResponse.HTTP_ERROR,"国家编码不可为空！");
         if(ObjectHelper.isEmpty(national.getName())) return new HttpResponse(HttpResponse.HTTP_ERROR,"国家名称不可为空！");
+        if(ObjectHelper.isEmpty(national.getOnum())) national.setOnum(0);
         INationalExample example = new INationalExample();
         example.createCriteria().andCodeEqualTo(national.getCode());
         List<INational> list =nationalMapper.selectByExample(example);

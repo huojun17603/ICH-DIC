@@ -32,11 +32,12 @@ public class IBankServiceImpl implements IBankService {
         if(ObjectHelper.isEmpty(bank.getName())) return new HttpResponse(HttpResponse.HTTP_ERROR,"银行名称不可为空！");
         if(ObjectHelper.isEmpty(bank.getCode())) return new HttpResponse(HttpResponse.HTTP_ERROR,"银行编码不可为空！");
         if(ObjectHelper.isEmpty(bank.getThemecode())) return new HttpResponse(HttpResponse.HTTP_ERROR,"主题色不可为空！");
+        if(ObjectHelper.isEmpty(bank.getOnum())) bank.setOnum(0);
+        bank.setStatus(0);
         IBankExample example = new IBankExample();
         example.createCriteria().andCodeEqualTo(bank.getCode());
         List<IBank> list =bankMapper.selectByExample(example);
         if(ObjectHelper.isNotEmpty(list)) return new HttpResponse(HttpResponse.HTTP_ERROR,"重复的银行编码！");
-        bank.setStatus(0);
         this.bankMapper.insert(bank);
         return new HttpResponse(HttpResponse.HTTP_OK,"OK");
     }
